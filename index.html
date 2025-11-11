@@ -37,6 +37,7 @@
             justify-content: center;
             text-align: center;
             color: white;
+            cursor: pointer;
         }
         
         .hero-content {
@@ -46,6 +47,11 @@
             max-width: 800px;
             color: #2c3e50;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+        
+        .hero-content:hover {
+            transform: scale(1.02);
         }
         
         .hero-content h1 {
@@ -62,11 +68,13 @@
             color: #34495e;
         }
         
-        /* 静态照片墙 */
+        /* 滚动照片墙 */
         .photo-wall {
             background-color: #34495e;
             padding: 40px 0;
             text-align: center;
+            overflow: hidden;
+            position: relative;
         }
         
         .photo-wall h2 {
@@ -75,30 +83,35 @@
             font-size: 28px;
         }
         
-        .photo-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            max-width: 1000px;
-            margin: 0 auto;
+        .photo-scroll {
+            display: flex;
+            animation: scroll 30s linear infinite;
         }
         
         .photo-item {
+            flex: 0 0 auto;
+            width: 200px;
+            height: 150px;
+            margin: 0 15px;
             border-radius: 10px;
             overflow: hidden;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-            transition: transform 0.3s ease;
-        }
-        
-        .photo-item:hover {
-            transform: translateY(-5px);
         }
         
         .photo-item img {
             width: 100%;
-            height: 200px;
+            height: 100%;
             object-fit: cover;
             background-color: #f0f0f0;
+        }
+        
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
         }
         
         /* 个人资料区域 */
@@ -128,7 +141,7 @@
             height: 350px;
             border-radius: 20px;
             object-fit: cover;
-            border: 5px solid #3498db;
+            border: 5px solid #34495e; /* 改为与Research Gallery背景相同的颜色 */
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
             transition: all 0.3s ease;
             background-color: #f0f0f0;
@@ -152,6 +165,7 @@
             background-color: #f8f9fa;
             border-radius: 10px;
             text-align: left;
+            border-left: 4px solid #34495e; /* 添加与Research Gallery背景相同的颜色 */
         }
         
         .contact-item {
@@ -163,7 +177,7 @@
         
         .contact-item i {
             width: 30px;
-            color: #3498db;
+            color: #34495e; /* 改为与Research Gallery背景相同的颜色 */
             font-size: 18px;
         }
         
@@ -187,7 +201,7 @@
             left: 0;
             width: 80px;
             height: 4px;
-            background-color: #3498db;
+            background-color: #34495e; /* 改为与Research Gallery背景相同的颜色 */
         }
         
         .info-section {
@@ -196,6 +210,7 @@
             border-radius: 10px;
             background-color: #f8f9fa;
             transition: all 0.3s ease;
+            border-left: 4px solid #34495e; /* 添加与Research Gallery背景相同的颜色 */
         }
         
         .info-section:hover {
@@ -206,13 +221,14 @@
         .info-section h3 {
             font-size: 22px;
             margin-bottom: 15px;
-            color: #3498db;
+            color: #34495e; /* 改为与Research Gallery背景相同的颜色 */
             display: flex;
             align-items: center;
         }
         
         .info-section h3 i {
             margin-right: 10px;
+            color: #34495e; /* 改为与Research Gallery背景相同的颜色 */
         }
         
         .info-section p {
@@ -234,7 +250,7 @@
         
         .info-section li::before {
             content: '•';
-            color: #3498db;
+            color: #34495e; /* 改为与Research Gallery背景相同的颜色 */
             font-weight: bold;
             position: absolute;
             left: 10px;
@@ -263,7 +279,7 @@
             width: 50px;
             height: 50px;
             border: 5px solid #f3f3f3;
-            border-top: 5px solid #3498db;
+            border-top: 5px solid #34495e; /* 改为与Research Gallery背景相同的颜色 */
             border-radius: 50%;
             animation: spin 1s linear infinite;
             margin-bottom: 20px;
@@ -325,10 +341,6 @@
                 height: 230px;
                 border-radius: 12px;
             }
-            
-            .photo-grid {
-                grid-template-columns: 1fr;
-            }
         }
     </style>
 </head>
@@ -340,42 +352,50 @@
     </div>
 
     <!-- 霍比特人风格背景区域 -->
-    <section class="hero">
+    <section class="hero" id="heroSection">
         <div class="hero-content">
             <h1>YUXI HUANG</h1>
-            <p>PhD Candidate in Neurobiology | Computational Cognitive Neuroscience</p>
+            <p>PhD Candidate in Neurobiology | Computational Neuroscience Researcher</p>
+            <p><small>Click anywhere to view CV</small></p>
         </div>
     </section>
 
-    <!-- 静态照片墙 -->
+    <!-- 滚动照片墙 -->
     <section class="photo-wall">
         <div class="container">
             <h2>Research Gallery</h2>
-            <div class="photo-grid">
+            <div class="photo-scroll">
                 <div class="photo-item">
-                    <img src="images/CNS2023.jpg" alt="CNS 2023" loading="lazy">
+                    <img src="images/CNS2023.jpg" alt="CNS 2023">
                 </div>
                 <div class="photo-item">
-                    <img src="images/monkey.jpg" alt="Monkey Research" loading="lazy">
+                    <img src="images/monkey.jpg" alt="Monkey Research">
                 </div>
                 <div class="photo-item">
-                    <img src="images/YellowMount合照.jpg" alt="Yellow Mountain" loading="lazy">
+                    <img src="images/YellowMount合照.jpg" alt="Yellow Mountain">
                 </div>
                 <div class="photo-item">
-                    <img src="images/珠海合照.jpg" alt="Zhuhai" loading="lazy">
+                    <img src="images/珠海合照.jpg" alt="Zhuhai">
+                </div>
+                <!-- 重复图片以创建无缝滚动效果 -->
+                <div class="photo-item">
+                    <img src="images/CNS2023.jpg" alt="CNS 2023">
                 </div>
                 <div class="photo-item">
-                    <img src="images/eva.jpg" alt="eva" loading="lazy">
+                    <img src="images/monkey.jpg" alt="Monkey Research">
                 </div>
                 <div class="photo-item">
-                    <img src="images/juiceMix.jpg" alt="juiceMix" loading="lazy">
+                    <img src="images/YellowMount合照.jpg" alt="Yellow Mountain">
+                </div>
+                <div class="photo-item">
+                    <img src="images/珠海合照.jpg" alt="Zhuhai">
                 </div>
             </div>
         </div>
     </section>
 
     <!-- 个人资料区域 -->
-    <section class="profile">
+    <section class="profile" id="profileSection">
         <div class="container">
             <div class="profile-content">
                 <div class="profile-img">
@@ -439,7 +459,7 @@
     <!-- 页脚 -->
     <footer>
         <div class="container">
-            <p>&copy; 2025 YUXI HUANG - Personal Resume</p>
+            <p>&copy; 2023 YUXI HUANG - Personal Resume</p>
         </div>
     </footer>
 
@@ -448,6 +468,14 @@
             const infoSections = document.querySelectorAll('.info-section');
             const profileImage = document.getElementById('profileImage');
             const loadingIndicator = document.getElementById('loadingIndicator');
+            const heroSection = document.getElementById('heroSection');
+            
+            // 添加点击滚动交互
+            heroSection.addEventListener('click', function() {
+                document.getElementById('profileSection').scrollIntoView({ 
+                    behavior: 'smooth' 
+                });
+            });
             
             // 显示加载指示器
             loadingIndicator.classList.add('active');
@@ -471,7 +499,7 @@
                 console.error('Failed to load profile image');
                 
                 // 尝试使用备用图片
-                profileImage.src = 'images/eva.jpg';
+                profileImage.src = 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80';
                 profileImage.classList.add('loaded');
                 
                 // 加载其他图片
