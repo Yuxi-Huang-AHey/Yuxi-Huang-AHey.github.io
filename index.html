@@ -64,8 +64,15 @@
         
         .hero-content p {
             font-size: 20px;
-            margin-bottom: 30px;
+            margin-bottom: 10px;
             color: #34495e;
+        }
+        
+        .hero-content .click-hint {
+            font-size: 16px;
+            color: #7f8c8d;
+            margin-top: 15px;
+            font-style: italic;
         }
         
         /* 滚动照片墙 */
@@ -96,6 +103,14 @@
             border-radius: 10px;
             overflow: hidden;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        /* 照片墙悬停效果 */
+        .photo-item:hover {
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+            z-index: 5;
         }
         
         .photo-item img {
@@ -103,6 +118,11 @@
             height: 100%;
             object-fit: cover;
             background-color: #f0f0f0;
+            transition: transform 0.3s ease;
+        }
+        
+        .photo-item:hover img {
+            transform: scale(1.1);
         }
         
         @keyframes scroll {
@@ -131,7 +151,7 @@
             flex: 1;
             min-width: 300px;
             text-align: center;
-            margin-top: -50px; /* 将个人照片往上移动 */
+            margin-top: 0px; /* 修改为0px */
             position: relative;
             z-index: 10;
         }
@@ -141,22 +161,17 @@
             height: 350px;
             border-radius: 20px;
             object-fit: cover;
-            border: 5px solid #34495e; /* 改为与Research Gallery背景相同的颜色 */
+            border: 5px solid #34495e; /* 改为与Gallery背景相同的颜色 */
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
-            transition: all 0.3s ease;
             background-color: #f0f0f0;
             /* 添加模糊加载效果 */
             filter: blur(5px);
             transition: filter 0.5s ease;
+            /* 移除悬停效果 */
         }
         
         .profile-img img.loaded {
             filter: blur(0);
-        }
-        
-        .profile-img img:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
         }
         
         .contact-info {
@@ -165,7 +180,7 @@
             background-color: #f8f9fa;
             border-radius: 10px;
             text-align: left;
-            border-left: 4px solid #34495e; /* 添加与Research Gallery背景相同的颜色 */
+            border-left: 4px solid #34495e; /* 添加与Gallery背景相同的颜色 */
         }
         
         .contact-item {
@@ -177,7 +192,7 @@
         
         .contact-item i {
             width: 30px;
-            color: #34495e; /* 改为与Research Gallery背景相同的颜色 */
+            color: #34495e; /* 改为与Gallery背景相同的颜色 */
             font-size: 18px;
         }
         
@@ -201,7 +216,7 @@
             left: 0;
             width: 80px;
             height: 4px;
-            background-color: #34495e; /* 改为与Research Gallery背景相同的颜色 */
+            background-color: #34495e; /* 改为与Gallery背景相同的颜色 */
         }
         
         .info-section {
@@ -210,7 +225,7 @@
             border-radius: 10px;
             background-color: #f8f9fa;
             transition: all 0.3s ease;
-            border-left: 4px solid #34495e; /* 添加与Research Gallery背景相同的颜色 */
+            border-left: 4px solid #34495e; /* 添加与Gallery背景相同的颜色 */
         }
         
         .info-section:hover {
@@ -221,14 +236,14 @@
         .info-section h3 {
             font-size: 22px;
             margin-bottom: 15px;
-            color: #34495e; /* 改为与Research Gallery背景相同的颜色 */
+            color: #34495e; /* 改为与Gallery背景相同的颜色 */
             display: flex;
             align-items: center;
         }
         
         .info-section h3 i {
             margin-right: 10px;
-            color: #34495e; /* 改为与Research Gallery背景相同的颜色 */
+            color: #34495e; /* 改为与Gallery背景相同的颜色 */
         }
         
         .info-section p {
@@ -250,7 +265,7 @@
         
         .info-section li::before {
             content: '•';
-            color: #34495e; /* 改为与Research Gallery背景相同的颜色 */
+            color: #34495e; /* 改为与Gallery背景相同的颜色 */
             font-weight: bold;
             position: absolute;
             left: 10px;
@@ -279,7 +294,7 @@
             width: 50px;
             height: 50px;
             border: 5px solid #f3f3f3;
-            border-top: 5px solid #34495e; /* 改为与Research Gallery背景相同的颜色 */
+            border-top: 5px solid #34495e; /* 改为与Gallery背景相同的颜色 */
             border-radius: 50%;
             animation: spin 1s linear infinite;
             margin-bottom: 20px;
@@ -314,10 +329,6 @@
             
             .profile {
                 padding: 60px 0;
-            }
-            
-            .profile-img {
-                margin-top: 0; /* 在移动设备上不往上移动 */
             }
             
             .profile-img img {
@@ -355,15 +366,15 @@
     <section class="hero" id="heroSection">
         <div class="hero-content">
             <h1>YUXI HUANG</h1>
-            <p>PhD Candidate in Neurobiology | Computational Neuroscience Researcher</p>
-            <p><small>Click anywhere to view CV</small></p>
+            <p>PhD Candidate in Neurobiology | Computational Cognitive Neuroscience</p>
+            <p class="click-hint">Click to know me!</p>
         </div>
     </section>
 
     <!-- 滚动照片墙 -->
     <section class="photo-wall">
         <div class="container">
-            <h2>Research Gallery</h2>
+            <h2>Gallery</h2> <!-- 修改为Gallery -->
             <div class="photo-scroll">
                 <div class="photo-item">
                     <img src="images/CNS2023.jpg" alt="CNS 2023">
@@ -377,11 +388,12 @@
                 <div class="photo-item">
                     <img src="images/珠海合照.jpg" alt="Zhuhai">
                 </div>
+                <!-- 新增两张照片 -->
                 <div class="photo-item">
-                    <img src="images/eva.jpg" alt="Zhuhai">
+                    <img src="images/eva.jpg" alt="EVA">
                 </div>
                 <div class="photo-item">
-                    <img src="images/juiceMix.jpg" alt="Zhuhai">
+                    <img src="images/juiceMix.jpg" alt="Juice Mix">
                 </div>
                 <!-- 重复图片以创建无缝滚动效果 -->
                 <div class="photo-item">
@@ -397,10 +409,10 @@
                     <img src="images/珠海合照.jpg" alt="Zhuhai">
                 </div>
                 <div class="photo-item">
-                    <img src="images/eva.jpg" alt="Zhuhai">
+                    <img src="images/eva.jpg" alt="EVA">
                 </div>
                 <div class="photo-item">
-                    <img src="images/juiceMix.jpg" alt="Zhuhai">
+                    <img src="images/juiceMix.jpg" alt="Juice Mix">
                 </div>
             </div>
         </div>
@@ -460,7 +472,7 @@
                     
                     <div class="info-section">
                         <h3><i class="fas fa-language"></i> Language</h3>
-                        <p><strong>Proficiency:</strong> English; Mandarin; Cantonese (native)</p>
+                        <p><strong>Proficiency:</strong> English (IELTS:7/9); Mandarin; Cantonese (native)</p>
                         <p><strong>Basic familiarity:</strong> Spanish</p>
                     </div>
                 </div>
