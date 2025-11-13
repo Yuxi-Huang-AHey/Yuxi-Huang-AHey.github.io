@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://yuxi-huang-ahey.github.io/sitemap.xml
