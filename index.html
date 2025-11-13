@@ -312,6 +312,9 @@
         .visitor-map-container {
             margin-top: 30px; 
             text-align: left;
+            max-width: 300px; /* 限制最大宽度 */
+            overflow: hidden; /* 防止内容溢出 */
+            pointer-events: none; /* 禁止所有点击事件 */
         }
         
         .visitor-map-container h3 {
@@ -327,6 +330,13 @@
             margin-right: 10px;
         }
         
+        /* 限制访客地图iframe的宽度 */
+            #mapmyvisitors iframe,
+            #visitor-map iframe,
+            #visitor-map div {
+            max-width: 100% !important;
+            width: 100% !important;
+        }
         @keyframes spin {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
